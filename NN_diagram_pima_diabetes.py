@@ -6,8 +6,10 @@ from tensorflow.keras.utils import plot_model
 # Load the dataset (pima_indian_diabetes.csv DataSet available in this same github link)
 df = pd.read_csv("https://raw.githubusercontent.com/dambi-ai/GEN-AI/refs/heads/Bronze/pima_indian_diabetes.csv")
 
-X = df.drop("Outcome", axis=1)
-y = df["Outcome"]                # Target: 0 or 1 (diabetes)
+# Get all columns except the last one (X)
+X = df.iloc[:, :-1]
+# Get only the last column for the target variable (y)
+y = df.iloc[:, -1]
 
 #Define the neural network
 model = Sequential()
